@@ -12,17 +12,37 @@ class ProductManager {
         prod.code.includes(product.code)
           ? (existeCodigo = true)
           : (existeCodigo = false);
-        // prod.code = product.code ? existeCodigo = true : existeCodigo = false;
+
     })
+
+    let datosCompletos = false
+    if (
+      Object.values(Product).includes("undefined") ||
+      Object.values(Product).includes("")
+    ) {
+      datosCompletos = false
+     
+    } else {
+      datosCompletos = true;
+    }
+    // this.products.forEach((prod)=>{
+    //   if(prod.values(Product).includes("undefined")){
+    //     console.log("hay campos vacios");
+    //     return datosCompletos = false
+        
+    //   } else return datosCompletos = true
+    // })
     
 
     if (!existeCodigo) {
-      if (this.products.length === 0) {
+      if (this.products.length === 0 && datosCompletos == true) {
         product.id = 1;
-      } else {
+          this.products.push(product);
+      } else if (datosCompletos == true) {
         product.id = this.products[this.products.length - 1].id + 1;
-      }
-      this.products.push(product);
+          this.products.push(product);
+      } else console.log("todos los campos deben estar completos")
+    
     } else console.log("Error, el producto ya existe.");
   }
 
@@ -61,7 +81,7 @@ class Product {
 const prueboProducto = new ProductManager();
 
 //2-Llamo al método getProducts, me devuelve un array vacío.
-console.log(prueboProducto.getProducts());
+// console.log(prueboProducto.getProducts());
 
 
 //3-Llamo al método addProduct, agrega un nuevo producto y le genera un id 1 automáticamente
@@ -72,7 +92,8 @@ prueboProducto.addProduct(
     200,
     "SinImagen",
     "abc123",
-    "25"
+    "44"
+   
   )
 );
 
@@ -80,23 +101,23 @@ prueboProducto.addProduct(
 console.log(prueboProducto.getProducts());
 
 
-//5-Agrego otro producto con el mismo "code"
-prueboProducto.addProduct(
-  new Product(
-    "Producto prueba2",
-    "Este es un producto prueba",
-    200,
-    "SinImagen",
-    "abc123",
-    "25"
-  )
-);
+//5-Agrego otro producto con el mismo código
+// prueboProducto.addProduct(
+//   new Product(
+//     "Producto prueba2",
+//     "Este es un producto prueba",
+//     200,
+//     "SinImagen",
+//     "abc123",
+//     "25"
+//   )
+// );
 
 //6-Llamo nuevamente al método getProducts, la consola me muestra un mensaje de error porque el código está repetido y sólo me muestra el primer objeto
-console.log(prueboProducto.getProducts());
+// console.log(prueboProducto.getProducts());
 
 //7-Llamo al método getProductsById, con un id existente
-prueboProducto.getProductById(1)
+// prueboProducto.getProductById(1)
 
 //8-Llamo al método getProductsById, con un id NO existente, la consola devuelve "not found"
-prueboProducto.getProductById(5)
+// prueboProducto.getProductById(5)
