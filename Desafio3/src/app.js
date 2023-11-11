@@ -4,8 +4,7 @@ import { ProductManager, Product } from "../../desafio2/desafio2.js";
 //correr con npm run dev, abrir el explorador con localhost:5000
 // const express = require('express') => esto se usa con type: common js en package.json
 
-// import ProductManager from "./desafio2";
-//ver si hace falta importat con .js
+
 const app = express();
 const PORT = 5000;
 
@@ -25,6 +24,10 @@ const prueboProducto = new ProductManager();
 // );
 
 // console.log(prueboProducto.getProducts());
+
+
+//El archivo json se generó correctamente
+
 
 const arrayPrueba = [
   {
@@ -73,7 +76,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-// app.get("/", (req, res) =>res.json(prueboProducto.getProducts()));
+
+//----Este es el problema, cuando quiero cambiar de arrayPrueba a getProducts me aparece un array vacío. No se si estoy en lo correcto al querer llamar a getProducts, o si deberia importar el archivo json (me parece redundante hacer eso), o si lo tendría que pasar a .stringify, o usar algún otro método
+app.get("/importacion", (req, res) =>res.json(prueboProducto.getProducts()));
 
 app.get("/productos", (req, res) => {
       const { limit } = req.query;
@@ -94,9 +99,6 @@ app.get("/productos/:id", (req, res) => {
 
   if (usuario) {
     return res.json(usuario);
-    // return res.send(
-    //   `<h1>El usuario es ${arrayPrueba}</h1><a href='./'><button>Ir a home</button></a>`
-    // )
   } else {
     return res.send(
       `<h1>No existe el id</h1><a href='./'><button>Ver todos los productos</button></a>`
