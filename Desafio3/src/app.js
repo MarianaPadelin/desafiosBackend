@@ -9,8 +9,6 @@ import { ProductManager, Product } from "../../desafio2/desafio2.js";
 const app = express();
 const PORT = 5000;
 
-
-
 // 1) Instancio la clase
 const prueboProducto = new ProductManager();
 
@@ -27,7 +25,6 @@ const prueboProducto = new ProductManager();
 // );
 
 // console.log(prueboProducto.getProducts());
-
 
 const arrayPrueba = [
   {
@@ -50,40 +47,44 @@ const arrayPrueba = [
     nombre: "pepe",
     edad: 71,
   },
+  {
+    id: 5,
+    nombre: "pepe",
+    edad: 45,
+  },
 ];
 
-// app.get("/", async (req, res) => {
-//   const { nombre, limit } = req.query;
-//   if (nombre) {
-//     const usuarios = arrayPrueba.filter((user) => user.nombre === nombre);
-//     const logitud = arrayPrueba.length === limit
-//     // const datos = await getDatos()
-//     if (usuarios && limit) {
-//         return res.json(usuarios.length)
-      
-//     //   return res.send(
-//     //     `<h1>Bienvenido ${nombre}</h1><a href='./productos'><button>Ir a productos</button></a>`
-//     //   );
-//     }else if(usuarios){
-//         return res.json(usuarios)
-//     } else {
-//         //acá no llega, muestra []
-//       res.send("<h1>Usuario no encontrado</h1>");
-//     }
-//   } else {
-//     res.send("<h1>Inicio</h1>");
-//   }
-// });
+app.get("/", async (req, res) => {
+  const { nombre, limit } = req.query;
+  if (nombre) {
+    const usuarios = await arrayPrueba.filter((user) => user.nombre === nombre);
 
+    if (usuarios && limit) {
+      usuarios.length = limit;
+      return res.json(usuarios);
+    } else if (usuarios) {
+      return res.json(usuarios);
+    } else {
+      //acá no llega, muestra []
+      return res.send("<h1>Usuario no encontrado</h1>");
+    }
+  } else {
+    res.send("<h1>Inicio</h1>");
+  }
+});
 
-app.get("/", (req, res) =>res.json(prueboProducto.getProducts()));
-
+// app.get("/", (req, res) =>res.json(prueboProducto.getProducts()));
 
 app.get("/productos", (req, res) => {
-  res.json(arrayPrueba);
-  //   res.send(
-  //     "<h1>Productos</h1><a href='./'><button>Ir a home</button></a>"
-  //   );
+      const { limit } = req.query;
+
+    if(limit){
+        arrayPrueba.length = limit
+        return res.json(arrayPrueba)
+    } else {
+        return res.json(arrayPrueba)
+    }
+ 
 });
 
 app.get("/productos/:id", (req, res) => {
@@ -92,14 +93,15 @@ app.get("/productos/:id", (req, res) => {
   const usuario = arrayPrueba.find((user) => user.id === +id);
 
   if (usuario) {
-    return res.json(usuario)
+    return res.json(usuario);
     // return res.send(
     //   `<h1>El usuario es ${arrayPrueba}</h1><a href='./'><button>Ir a home</button></a>`
-    // ) 
+    // )
   } else {
-        return res.send(
-      `<h1>No existe el id</h1><a href='./'><button>Ir a home</button></a>`
-)}
+    return res.send(
+      `<h1>No existe el id</h1><a href='./'><button>Ver todos los productos</button></a>`
+    );
+  }
 });
 
 app.listen(PORT, () => {
