@@ -1,5 +1,4 @@
-
-import fs from "fs"
+import fs from "fs";
 
 class ProductManager {
   constructor() {
@@ -54,6 +53,8 @@ class ProductManager {
   }
 
   getProducts() {
+    let products = fs.readFileSync(this.path, "utf-8");
+    this.products = JSON.parse(products);
     return this.products;
   }
 
@@ -122,8 +123,7 @@ class Product {
   }
 }
 
-export  { ProductManager, Product }
-
+export { ProductManager, Product };
 
 //-------- Pruebas --------
 

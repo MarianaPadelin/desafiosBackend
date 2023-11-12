@@ -22,12 +22,9 @@ app.get("/products", async (req, res) => {
   const { limit } = req.query;
 
   if (limit && limit <= datosImportados.length) {
-    datosImportados.length = limit;
-    return res.send(datosImportados);
+    datosImportados.length = limit
+   return res.send(datosImportados);
   } else {
-
-    //hasta acá llega bien, pero si cambio el limite me devuelve la misma longitud del limite que puse anteriormente.
-    console.log(datosImportados)
     return res.send(datosImportados)
   }
 });
