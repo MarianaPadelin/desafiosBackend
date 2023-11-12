@@ -25,8 +25,10 @@ app.get("/products", async (req, res) => {
     datosImportados.length = limit;
     return res.send(datosImportados);
   } else {
-    // console.log(datosImportados)
-    return res.send(datosImportados);
+
+    //hasta acá llega bien, pero si cambio el limite me devuelve la misma longitud del limite que puse anteriormente.
+    console.log(datosImportados)
+    return res.send(datosImportados)
   }
 });
 
