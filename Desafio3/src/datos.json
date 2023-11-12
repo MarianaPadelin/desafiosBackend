@@ -9,12 +9,84 @@
 		"id": 1
 	},
 	{
-		"title": "Producto prueba4",
-		"description": "Acá tiene todo bien",
+		"title": "producto numero 2",
+		"description": "descripción",
 		"price": 12345,
 		"thumbnail": "SinImagen",
-		"code": "otrocodigo",
-		"stock": "4999",
+		"code": "aaaa111",
+		"stock": "344",
 		"id": 2
+	},
+	{
+		"title": "producto numero 3",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "fthoigbeo",
+		"stock": "400",
+		"id": 3
+	},
+	{
+		"title": "producto numero 4",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "egevrw",
+		"stock": "60",
+		"id": 4
+	},
+	{
+		"title": "producto numero 5",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "fgertrty",
+		"stock": "500",
+		"id": 5
+	},
+	{
+		"title": "producto numero 6",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "pouykjnr",
+		"stock": "9004",
+		"id": 6
+	},
+	{
+		"title": "producto numero 7",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "ertgerge",
+		"stock": "1020",
+		"id": 7
+	},
+	{
+		"title": "producto numero 8",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "23423",
+		"stock": "400",
+		"id": 8
+	},
+	{
+		"title": "producto numero 9",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "hgrnbgdv",
+		"stock": "344",
+		"id": 9
+	},
+	{
+		"title": "producto numero 10",
+		"description": "descripción",
+		"price": 12345,
+		"thumbnail": "SinImagen",
+		"code": "gfgvfre",
+		"stock": "5",
+		"id": 10
 	}
 ]
