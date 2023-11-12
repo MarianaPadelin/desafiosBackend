@@ -1,8 +1,7 @@
 //Desafío entregable N°3
 
 import express from "express";
-import { ProductManager } from "./desafio2.js";
-
+import { ProductManager } from "./productManager.js";
 
 const app = express();
 const PORT = 8080;
@@ -12,7 +11,6 @@ const prueboProducto = new ProductManager();
 
 // console.log(prueboProducto.getProducts());
 
-
 app.get("/", async (req, res) => {
   res.send(
     "<h1>Inicio</h1><a href='/products'><button>Ver los productos</button></a>"
@@ -20,17 +18,15 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/products", async (req, res) => {
-  let datosImportados = await prueboProducto.getProducts();
+  const datosImportados = await prueboProducto.getProducts();
   const { limit } = req.query;
 
   if (limit && limit <= datosImportados.length) {
     datosImportados.length = limit;
-      res.send(datosImportados);
-
+    return res.send(datosImportados);
   } else {
-    //falta refrescar la pagina  
     // console.log(datosImportados)
-     res.send(datosImportados);
+    return res.send(datosImportados);
   }
 });
 

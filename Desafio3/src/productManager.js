@@ -128,7 +128,7 @@ export  { ProductManager, Product }
 //-------- Pruebas --------
 
 // 1) Instancio la clase
-const prueboProducto = new ProductManager();
+// const prueboProducto = new ProductManager();
 
 // 2) Agrego productos y pruebo las validaciones. Si hay campos vacios o si se repite el código, no se agregan
 // prueboProducto.addProduct(
