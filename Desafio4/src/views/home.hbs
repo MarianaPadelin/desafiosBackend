@@ -1,0 +1,30 @@
+{{!-- <h1> Bienvenido {{ name }}</h1>
+
+<p>Lista de todos los productos almacenados hasta el momento</p>
+<ul>
+    <li>{{ titulo }}</li>
+    <li>{{ descripcion }}</li>
+    <li>{{ precio }}</li>
+</ul> --}}
+<div>
+<h3>Lista de todos los productos almacenados hasta el momento</h3>
+<table> <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>CODE</th>
+            <th>STATUS</th>
+            <th>CATEGORY</th>
+            <th>STOCK</th>
+            <th>THUMBNAILS</th>
+            <th> DELETE </th>
+      </tr>
+      <br>
+      <tr id="products"> </tr>
+      <br>
+      </table>
+
+  <script src="/socket.io/socket.io.js"></script>
+   <script src="/js/main.js"></script>
+</div>

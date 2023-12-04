@@ -1,0 +1,49 @@
+[
+	{
+		"title": "producto 1",
+		"description": "este es otro producto",
+		"price": 123,
+		"code": "hytwrw",
+		"status": true,
+		"category": "cat1",
+		"stock": 55,
+		"thumbnail": [
+			[
+				"img1",
+				"img2",
+				"img3"
+			]
+		],
+		"id": 1
+	},
+	{
+		"title": "producto 2",
+		"description": "este es otro producto",
+		"price": 345,
+		"code": "tjyntr",
+		"status": true,
+		"category": "cat1",
+		"stock": 67,
+		"thumbnail": [
+			[
+				"img1",
+				"img2",
+				"img3"
+			]
+		],
+		"id": 2
+	},
+	{
+		"title": "producto 3",
+		"description": "este es otro producto",
+		"price": 2000,
+		"code": "123ghi",
+		"status": true,
+		"category": "cat2",
+		"stock": 3,
+		"thumbnail": [
+			null
+		],
+		"id": 3
+	}
+]
