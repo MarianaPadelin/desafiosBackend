@@ -45,5 +45,31 @@
 			null
 		],
 		"id": 3
+	},
+	{
+		"title": "producto 4",
+		"description": "este es un producto más",
+		"price": 666,
+		"code": "qefewe",
+		"status": true,
+		"category": null,
+		"stock": null,
+		"thumbnail": [
+			3
+		],
+		"id": 4
+	},
+	{
+		"title": "producto 5",
+		"description": "ye wfw",
+		"price": 77,
+		"code": "hwrthwr",
+		"status": true,
+		"category": null,
+		"stock": null,
+		"thumbnail": [
+			99
+		],
+		"id": 5
 	}
 ]

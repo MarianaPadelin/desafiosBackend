@@ -1,14 +1,8 @@
-// import { validateSocket } from "../../utils/validateSocket.js";
-//console error: Cannot use import statement outside a module
-
-
-
 //inicializo socket desde cliente
 const socket = io();
- 
 
-//falta cartel de sweet alert
-//falta emprolijar la tabla
+
+//falta tabla de home
 //----------------------------------------------------
 const form = document.querySelector("form");
 
@@ -28,30 +22,32 @@ form.addEventListener("submit", (e) => {
     thumbnail: formData.get("thumbnail"),
   };
 
-//   console.log(validateSocket(product));
-//   if (validateSocket(product) === true) {
-    Swal.fire({
-      title: "Formulario enviado",
-      icon: "success",
-    });
-//   } else {
-//     Swal.fire({
-//       title: "Error, todos los campos deben estar completos",
-//       icon: "error",
-//     });
-//   }
   socket.emit("formProducto", product);
+
+  socket.on("validacion", (data) => {
+    if (data === "ok") {
+      Swal.fire({
+        title: "Formulario enviado",
+        icon: "success",
+      });
+    } else {
+      Swal.fire({
+        title: "Error, todos los campos deben estar completos",
+        icon: "error",
+      });
+    }
+  });
   form.reset();
 });
 
 socket.on("listaDeProductos", (data) => {
   const listaDeProductos = document.querySelector("#products");
 
-  listaDeProductos.innerHTML = data.map((post) => {
+  listaDeProductos.innerHTML = data
+    .map((post) => {
       return `
 
-      
-            <td>${post.id}</td>
+    <tr ${(key = post.id)}>    <td>${post.id}</td>
             <td> ${post.title}</td>
             <td>${post.description}</td>
             <td>${post.price}</td>
@@ -60,7 +56,8 @@ socket.on("listaDeProductos", (data) => {
             <td>${post.category}</td>
             <td>${post.stock}</td>
             <td>${post.thumbnail}</td>
-            <td><button>X</button></td>
+            <td><button>X</button></td></tr>
+        
       
        `;
     })

@@ -6,16 +6,32 @@ const homeRouter = Router();
 const prueboProducto = new ProductManager("./src/productos.json");
 
 homeRouter.get("/", async (req, res) => {
-    const datosImportados = await prueboProducto.getProducts();
-  
-     res.render("home", {
-       titulo: datosImportados.map(({ title }) => title),
-       descripcion: datosImportados.map(({ description }) => description),
-       precio: datosImportados.map(({ price }) => price),
-       fileCss: "index.css",
-     });
-//   console.log(datosImportados.map(({ title }) => title))
-});
+  const datosImportados = await prueboProducto.getProducts();
 
+  const datosMapeados = datosImportados.map((prod) => prod.title);
+  console.log(datosMapeados);
+  // const listaDeProductos = document.querySelector("#products");
+  res.render("home", {
+
+    datos: datosImportados.map((post) => {
+      return `    
+            ID: ${post.id}\n
+            TITLE: ${post.title}
+            DESCRIPTION: ${post.description}
+            PRICE: ${post.price}
+            CODE: ${post.code}
+            STATUS: ${post.status}
+            CATEGORY: ${post.category}
+            STOCK: ${post.stock}
+            THUMBNAILS: ${post.thumbnail}
+            \n
+          `;
+    }),
+    //  descripcion: datosImportados.map(({ description }) => description),
+    //  precio: datosImportados.map(({ price }) => price),
+    pageName: "Home",
+    fileCss: "index.css",
+  });
+});
 
 export default homeRouter;

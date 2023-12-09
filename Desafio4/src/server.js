@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
     console.log(data);
     if (validateSocket(data) === true) {
       console.log("Formulario enviado");
-  
+      socket.emit("validacion", "ok")
       try {
         const nuevoProducto = new Product(
           data.title,
@@ -78,6 +78,7 @@ io.on("connection", (socket) => {
       }
     } else {
       console.log("todos los campos deben estar completos");
+      socket.emit("validacion", "error")
     }
  
   });
