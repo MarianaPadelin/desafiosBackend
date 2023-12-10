@@ -12,25 +12,23 @@ homeRouter.get("/", async (req, res) => {
   console.log(datosMapeados);
   // const listaDeProductos = document.querySelector("#products");
   res.render("home", {
-
-    datos: datosImportados.map((post) => {
-      return `    
-            ID: ${post.id}\n
-            TITLE: ${post.title}
-            DESCRIPTION: ${post.description}
-            PRICE: ${post.price}
-            CODE: ${post.code}
-            STATUS: ${post.status}
-            CATEGORY: ${post.category}
-            STOCK: ${post.stock}
-            THUMBNAILS: ${post.thumbnail}
-            \n
-          `;
-    }),
+    datos: datosMapeados,
+    // datos: datosImportados.map((post) => {
+    //   return `    
+    //         ID: ${post.id}\n
+    //         TITLE: ${post.title}
+    //         DESCRIPTION: ${post.description}
+    //         PRICE: ${post.price}
+    //         CODE: ${post.code}
+    //         STATUS: ${post.status}
+    //         CATEGORY: ${post.category}
+    //         STOCK: ${post.stock}
+    //         THUMBNAILS: ${post.thumbnail}
+    //         \n
+    //       `;
+    // }),
     //  descripcion: datosImportados.map(({ description }) => description),
     //  precio: datosImportados.map(({ price }) => price),
-    pageName: "Home",
-    fileCss: "index.css",
   });
 });
 

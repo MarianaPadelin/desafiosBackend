@@ -1,19 +1,10 @@
 import express from "express";
-
 import handlebars from "express-handlebars";
 import __dirname from "./utils.js";
-
-import productsRouter from "./routes/products.router.js";
-import cartRouter from "./routes/cart.router.js";
-import homeRouter from "./routes/home.router.js";
-
 import { Server } from "socket.io";
-import realTimeProducts from "./routes/realTimeProducts.js";
 import { ProductManager, Product } from "./productManager.js";
 import { validateSocket } from "./utils/validateSocket.js"
-
-//probar con viewrouter, en lugar de tener cada ruta por separado
-// import viewRouter from "./routes/views.routes.js";
+import viewRouter from "./routes/views.routes.js";
 
 const app = express();
 const PORT = 8080;
@@ -43,11 +34,7 @@ app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
 
 app.use(express.static(`${__dirname}/public`));
-
-app.use("/api/products", productsRouter);
-app.use("/api/cart", cartRouter);
-app.use("/", homeRouter);
-app.use("/realTimeProducts", realTimeProducts);
+app.use("/", viewRouter);
 
 const productoSocket = new ProductManager("./src/productos.json");
 

@@ -1,9 +1,6 @@
 //inicializo socket desde cliente
 const socket = io();
 
-
-//falta tabla de home
-//----------------------------------------------------
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
@@ -56,9 +53,7 @@ socket.on("listaDeProductos", (data) => {
             <td>${post.category}</td>
             <td>${post.stock}</td>
             <td>${post.thumbnail}</td>
-            <td><button>X</button></td></tr>
-        
-      
+            <td><button>X</button></td></tr>      
        `;
     })
     .join(" ");
