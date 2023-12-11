@@ -5,22 +5,11 @@ const router = Router();
 const prueboProducto = new ProductManager("./src/productos.json");
 
 router.get("/", async (req, res) => {
-    const datosImportados = await prueboProducto.getProducts();
+  const datosImportados = await prueboProducto.getProducts();
 
+  // console.log(datosImportados);
   res.render("home.hbs", {
-    datos: datosImportados.map((post) => {
-      return `    
-            ID: ${post.id}
-            TITLE: ${post.title}
-            DESCRIPTION: ${post.description}
-            PRICE: ${post.price}
-            CODE: ${post.code}
-            STATUS: ${post.status}
-            CATEGORY: ${post.category}
-            STOCK: ${post.stock}
-            THUMBNAILS: ${post.thumbnail}
-          `;
-    }),
+    datos: datosImportados,
     pageName: "Home",
     fileCss: "index.css",
   });

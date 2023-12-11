@@ -45,6 +45,18 @@
 			null
 		],
 		"id": 3
+	},
+	{
+		"title": "producto 4",
+		"description": "nuevo producto",
+		"price": 504,
+		"code": "roijwg2p",
+		"status": true,
+		"category": "cat2",
+		"stock": 66,
+		"thumbnail": [
+			null
+		],
+		"id": 4
 	}
-	
 ]
