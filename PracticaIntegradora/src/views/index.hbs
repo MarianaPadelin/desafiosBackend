@@ -1,0 +1,55 @@
+<div>
+  <h3> Por favor, ingrese los datos del nuevo producto </h3>
+  <div id="formulario">
+    <form>
+      <input
+        type="text"
+        placeholder="Nombre del producto"
+        name="title"
+        id="title"
+      />
+      <input
+        type="text"
+        placeholder="Descripción del producto"
+        name="description"
+        id="description"
+      />
+      <input type="number" placeholder="Precio" name="price" id="price" />
+      <input type="text" placeholder="Código" name="code" id="code" />
+      <input
+        type="text"
+        placeholder="Categoría"
+        name="category"
+        id="category"
+      />
+      <input type="number" placeholder="Stock" name="stock" id="stock" />
+      <input type="submit" value="Send" />
+    </form>
+  </div>
+
+  <h3>Lista de todos los productos almacenados hasta el momento</h3>
+  <div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>DESCRIPTION</th>
+        <th>PRICE</th>
+        <th>CODE</th>
+        <th>STATUS</th>
+        <th>CATEGORY</th>
+        <th>STOCK</th>
+        <th>THUMBNAILS</th>
+        <th> DELETE </th>
+      </tr>
+      <tbody id="products"> </tbody>
+    </table>
+    <br />
+    <a href="/"><button> Ir a Home </button></a>
+
+  </div>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/main.js"></script>
+</div>
