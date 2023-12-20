@@ -22,25 +22,16 @@ class ProductDao {
 
     async getProductById(_id){
         try {
-          await productModel.find({ _id });
-          if (!id) {
-            console.log("No se encontró el producto");
-          } else {
-            return await productModel.find(id);
-          }
+          return await productModel.findById({ _id })
         } catch (error) {
+          console.log("id not found")
           console.log(error);
         }
     }
 
     async deleteProduct(_id){
         try {
-            await productModel.findOne(id)
-            if(!id){
-                console.log("No se encontró el producto")
-            } else{
-                await productModel.findByIdAndDelete({ _id })
-            }
+          return await productModel.findByIdAndDelete({ _id })
         } catch (error) {
           console.log(error);
         }
@@ -48,12 +39,13 @@ class ProductDao {
 
     async modifyProduct(_id, newProduct){
         try {
-          await productModel.findOne(id);
-          if (!id) {
-            console.log("No se encontró el producto");
-          } else {
-            await productModel.findByIdAndUpdate({ _id }, newProduct);
-          }
+          return await productModel.findByIdAndUpdate({ _id }, newProduct)
+          // await productModel.findOne(id);
+          // if (!id) {
+          //   console.log("No se encontró el producto");
+          // } else {
+          //   return await productModel.findByIdAndUpdate({ _id }, newProduct);
+          // }
         } catch (error) {
           console.log(error);
         }

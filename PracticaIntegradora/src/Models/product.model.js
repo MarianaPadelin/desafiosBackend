@@ -11,6 +11,7 @@ const productSchema = new Schema({
   stock: { type: Number, required: true },
 });
 
+//el model tiene como parámetros la colección de la data base y el schema
 const productModel = model("products", productSchema);
 
 export { productModel };

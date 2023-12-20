@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
   try {
     const products = await ProductDao.getAllProducts();
     res.json({
-      data: products,
       message: "Post list",
+      data: products,
     });
   } catch (error) {
     ProductDao.errorMessage(error);
@@ -19,62 +19,83 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const product = await ProductDao.getProductById(req.params.id);
-  res.json({
-    product,
-  });
+  try {
+    const { id } = req.params;
+
+    const product = await ProductDao.getProductById(id);
+    // if (!product) {
+    //   console.log("id not found");
+    //   res.json({
+    //     message: "id not found",
+    //   });
+    // }
+    //anda bien pero se me tilda el codigo en consola
+
+    res.status(200).json({
+      message: "Product found",
+      product,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "error",
+      error,
+    });
+  }
 });
 
 router.post("/", async (req, res) => {
   try {
-    const { datosProducto } = req.body;
+    const datosProducto = req.body;
 
-    //   const user = await userDao.findById(author);
-
-    //   if (!user) return res.status(404).json({ message: "User not found" });
+    console.log(datosProducto, "estos son los datos que ingresé por postman");
 
     const product = await ProductDao.addProduct(datosProducto);
+    //no salta el error en postman por validación
 
-    res.json({
-      product,
+    res.status(200).json({
       message: "New product added to commerce list",
+      data: product,
     });
-    res.redirect("/");
   } catch (error) {
     ProductDao.errorMessage(error);
   }
+});
 
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-  router.put("/:id", async (req, res) => {
-    try {
-      const { id } = req.params;
+    const product = await ProductDao.modifyProduct(id, req.body);
 
-      const product = await ProductDao.modifyProduct(id, req.body);
+    res.status(200).json({
+      message: "Product updated",
+      product,
+    });
+  } catch (error) {
+    console.log("hay un error de put");
+    ProductDao.errorMessage(error);
+  }
+}); 
 
-      res.json({
-        product,
-        message: "Product updated",
-      });
-    } catch (error) {
-      ProductDao.errorMessage(error);
-    }
-  });
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const product = await ProductDao.deleteProduct(id);
 
-  router.delete("/:id", async (req, res) => {
-    try {
-      const { id } = req.params;
-      const product = await ProductDao.deleteProduct(id);
-
-      res.json({
-        product,
-        message: "Product deleted",
-      });
-    } catch (error) {
-      
-      ProductDao.errorMessage(error);
-    }
-  });
+    res.status(200).json({
+      message: "Product deleted",
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      error,
+      message: "Error",
+    });
+    // ProductDao.errorMessage(error);
+  }
 });
 
 export default router;
