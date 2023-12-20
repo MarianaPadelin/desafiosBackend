@@ -1,50 +1,61 @@
-const socket = io();
 
-const chatbox = document.querySelector("#chatbox");
-let user;
 
-Swal.fire({
-  title: "Bienvenido",
-  text: "Ingrese su nombre para continuar",
-  input: "text",
-  inputValidator: (value) => {
-    return !value && "Necesitás identificarte";
-  },
-  allowOutsideClick: false,
-}).then((value) => {
-  user = value.value;
-  socket.emit("inicio", user);
-});
+//--------------------------------Form---------------------
 
-chatbox.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    socket.emit("message", {
-      user,
-      message: e.target.value,
-    });
-    chatbox.value = "";
-  }
-});
+// const form = document.querySelector("form");
 
-socket.on("connected", (data) => {
-  if (user !== undefined) {
-    Swal.fire({
-      text: `Nuevo usuario conectado: ${data}`,
-      toast: true,
-      position: "centre",
-    });
-  }
-});
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
 
-socket.on("messages", (data) => {
-  const log = document.querySelector("#messages");
-  let messages = "";
+//   const formData = new FormData(form);
 
-  data.forEach((message) => {
-    messages += `<strong>${message.user}</strong>: ${message.message} <br />`;
-  });
+//   const product = {
+//     title: formData.get("title"),
+//     description: formData.get("description"),
+//     price: Number(formData.get("price")),
+//     code: formData.get("code"),
+//     status: formData.get("status"),
+//     category: formData.get("category"),
+//     stock: Number(formData.get("stock")),
+//     thumbnail: formData.get("thumbnail"),
+//   };
 
-  log.innerHTML = messages;
+//   socket.emit("formProducto", product);
 
-  // console.log(data);
-});
+//   socket.on("validacion", (data) => {
+//     if (data === "ok") {
+//       Swal.fire({
+//         title: "Formulario enviado",
+//         icon: "success",
+//       });
+//     } else {
+//       Swal.fire({
+//         title: "Error, todos los campos deben estar completos",
+//         icon: "error",
+//       });
+//     }
+//   });
+//   form.reset();
+// });
+
+// socket.on("listaDeProductos", (data) => {
+//   const listaDeProductos = document.querySelector("#products");
+
+//   listaDeProductos.innerHTML = data
+//     .map((post) => {
+//       return `
+
+//     <tr ${(key = post.id)}>    <td>${post.id}</td>
+//             <td> ${post.title}</td>
+//             <td>${post.description}</td>
+//             <td>${post.price}</td>
+//             <td>${post.code}</td>
+//             <td>${post.status}</td>
+//             <td>${post.category}</td>
+//             <td>${post.stock}</td>
+//             <td>${post.thumbnail}</td>
+//             <td><button>X</button></td></tr>      
+//        `;
+//     })
+//     .join(" ");
+// });

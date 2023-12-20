@@ -8,11 +8,11 @@ router.get("/", async (req, res) => {
     const carts = await CartDao.findCart();
 
     res.json({
+      message: "These are the carts:",
       data: carts,
-      message: "These are all the carts",
     });
   } catch (error) {
-    CartDao.errorMessage(error)
+    CartDao.errorMessage(error);
   }
 });
 
@@ -21,14 +21,19 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
     const cart = await CartDao.findCartById(id);
 
-    if (!cart) return res.json({ message: "Cart not found" });
-
-    res.json({
-      cart,
-      message: "Cart found",
-    });
+    if (!cart) {
+      console.log("cart not found");
+      res.status(404).json({
+        message: "Cart not found",
+      });
+    } else {
+      res.json({
+        cart,
+        message: "Cart found",
+      });
+    }
   } catch (error) {
-       CartDao.errorMessage(error);
+    CartDao.errorMessage(error);
   }
 });
 
@@ -36,12 +41,19 @@ router.post("/", async (req, res) => {
   try {
     const cart = await CartDao.createCart(req.body);
 
-    res.json({
-      cart,
-      message: "New cart created",
-    });
+    if (cart === false) {
+      console.log("Couldn't add product to list");
+      res.status(404).json({
+        message: "Couldn't add product to list. Fields incomplete.",
+      });
+    } else {
+      res.json({
+        cart,
+        message: "New cart created",
+      });
+    }
   } catch (error) {
-      CartDao.errorMessage(error);
+    CartDao.errorMessage(error);
   }
 });
 
@@ -51,14 +63,21 @@ router.put("/:id", async (req, res) => {
 
     const cart = await CartDao.findCartById(id);
 
-    await CartDao.updateCart(id, req.body);
+    if (!cart) {
+      console.log("cart not found");
+      res.status(404).json({
+        message: "Cart not found",
+      });
+    } else {
+      await CartDao.updateCart(id, req.body);
 
-    res.json({
-      cart,
-      message: "Cart updated",
-    });
+      res.json({
+        message: "Cart updated",
+        cart,
+      });
+    }
   } catch (error) {
-      CartDao.errorMessage(error);
+    CartDao.errorMessage(error);
   }
 });
 
@@ -66,13 +85,19 @@ router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const cart = await CartDao.deleteCart(id);
-
-    res.json({
-      cart,
-      message: "Cart deleted",
-    });
+    if (!cart) {
+      console.log("cart not found");
+      res.status(404).json({
+        message: "Cart not found",
+      });
+    } else {
+      res.json({
+        message: "Cart deleted",
+        cart,
+      });
+    }
   } catch (error) {
-      CartDao.errorMessage(error);
+    CartDao.errorMessage(error);
   }
 });
 

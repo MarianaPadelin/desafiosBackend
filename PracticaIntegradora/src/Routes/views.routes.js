@@ -15,11 +15,28 @@ router.get("/", async (req, res) => {
   });
 });
 
+// router.get("/api/products", async(req, res)=>{
+//     const products = await ProductDao.getAllProducts();
+
+//     res.render("index", {
+//       products
+//     })
+// })
+
+// router.get("/api/carts", async(req, res)=> {
+//     const carts = await CartDao.findCart();
+
+//     res.render("cart", {
+//       carts
+//     })
+// })
 
 router.get("/chat", async (req,res) => {
-  //req.params con el mensaje y mandarlo por parametro adentro de addmessage?
-  
-  const messages = await MessagesDao.addMessage(messages)
+
+  const message = req.body
+  const user = req.body
+  console.log(user, message)
+  const messages = await MessagesDao.addMessage(message)
 
   res.render("chat", {
     messages

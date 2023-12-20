@@ -23,23 +23,20 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
 
     const product = await ProductDao.getProductById(id);
-    // if (!product) {
-    //   console.log("id not found");
-    //   res.json({
-    //     message: "id not found",
-    //   });
-    // }
+    if (!product) {
+      console.log("id not found");
+      res.json({
+        message: "id not found",
+      });
+    } else {
+      res.status(200).json({
+        message: "Product found",
+        product,
+      });
+    }
     //anda bien pero se me tilda el codigo en consola
-
-    res.status(200).json({
-      message: "Product found",
-      product,
-    });
   } catch (error) {
-    res.status(404).json({
-      message: "error",
-      error,
-    });
+    ProductDao.errorMessage(error);
   }
 });
 
@@ -47,20 +44,24 @@ router.post("/", async (req, res) => {
   try {
     const datosProducto = req.body;
 
-    console.log(datosProducto, "estos son los datos que ingresé por postman");
+    console.log(datosProducto);
 
     const product = await ProductDao.addProduct(datosProducto);
-    //no salta el error en postman por validación
-
-    res.status(200).json({
-      message: "New product added to commerce list",
-      data: product,
-    });
+    if (product === false) {
+      console.log("Couldn't add product to list");
+      res.status(404).json({
+        message: "Couldn't add product to list. Fields incomplete.",
+      });
+    } else {
+      res.status(200).json({
+        message: "New product added to commerce list",
+        data: product,
+      });
+    }
   } catch (error) {
     ProductDao.errorMessage(error);
   }
 });
-
 
 router.put("/:id", async (req, res) => {
   try {
@@ -68,26 +69,39 @@ router.put("/:id", async (req, res) => {
 
     const product = await ProductDao.modifyProduct(id, req.body);
 
-    res.status(200).json({
-      message: "Product updated",
-      product,
-    });
+    if (!product) {
+      console.log("id not found");
+      res.json({
+        message: "id not found",
+      });
+    } else {
+      res.status(200).json({
+        message: "Product updated",
+        product,
+      });
+    }
   } catch (error) {
     console.log("hay un error de put");
     ProductDao.errorMessage(error);
   }
-}); 
+});
 
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const product = await ProductDao.deleteProduct(id);
 
-    res.status(200).json({
-      message: "Product deleted",
-      product,
-    });
+    if (!product) {
+      console.log("id not found");
+      res.json({
+        message: "id not found",
+      });
+    } else {
+      res.status(200).json({
+        message: "Product deleted",
+        product,
+      });
+    }
   } catch (error) {
     console.log(error);
     res.status(404).json({
