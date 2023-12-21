@@ -7,10 +7,16 @@ import productRouter from "./Routes/product.routes.js"
 import cartRouter from "./Routes/cart.routes.js"
 import { Server } from "socket.io";
 import messagesDao from "./daos/dbManager/messages.dao.js";
+import Handlebars from "handlebars";
+import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
+//esto es para recorrer el array en las views (cuando es un array de objetos) 
 
 
 //falta la consigna de cart
-//falta la view de los productos
+
+
+//---PRE ENTREGA
+//indexar por precio para hacer el sort?
 
 const app = express();
 const PORT = 8080;
@@ -23,7 +29,7 @@ const httpServer = app.listen(PORT, () =>
 
 const io = new Server(httpServer);
 
-//este array lo tengo que guardar en mongo
+//este array lo tengo que guardar en mongo?
 const messages = [];
 
 io.on("connection", (socket) => {
@@ -68,6 +74,7 @@ app.engine(
   handlebars.engine({
     extname: "hbs",
     defaultLayout: "main",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
 
@@ -76,7 +83,7 @@ app.set("views", `${__dirname}/views`);
 
 app.use(express.static(`${__dirname}/public`));
 
-//solo dejar viewsrouter
+//views
 app.use("/api/carts", cartRouter);
 app.use("/api/products", productRouter);
 app.use("/", viewRouter);

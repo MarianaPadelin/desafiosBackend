@@ -1,4 +1,4 @@
-import { messageModel } from "../../Models/chat.js";
+import { messageModel } from "../../Models/chat.model.js";
 
 class MessageDao {
     

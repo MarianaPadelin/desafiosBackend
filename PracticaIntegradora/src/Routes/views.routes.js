@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
   res.render("index", {
     products,
     carts,
+    fileCss: "index.css",
   });
 });
 
@@ -35,7 +36,7 @@ router.get("/chat", async (req,res) => {
 
   const message = req.body
   const user = req.body
-  console.log(user, message)
+  // console.log(user, message)
   const messages = await MessagesDao.addMessage(message)
 
   res.render("chat", {

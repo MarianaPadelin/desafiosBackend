@@ -68,6 +68,8 @@ router.put("/:id", async (req, res) => {
     const { id } = req.params;
 
     const product = await ProductDao.modifyProduct(id, req.body);
+    
+//para devolver el producto actualizado volver a hacer un findBYId de este mismo producto acá
 
     if (!product) {
       console.log("id not found");

@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const carts = await CartDao.findCart();
-
+    console.log(carts)
     res.json({
       message: "These are the carts:",
       data: carts,
@@ -57,6 +57,31 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/:id/product/:pid", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { pid } = req.params
+    
+    const cart = await CartDao.findCartById(id);
+
+    if (!cart) {
+      console.log("cart not found");
+      res.status(404).json({
+        message: "Cart not found",
+      });
+    } else {
+      await CartDao.addProductToCart(id);
+
+      res.json({
+        message: `Product ${pid} added to cart ${id}`,
+        cart,
+      });
+    }
+  } catch (error) {
+    CartDao.errorMessage(error);
+  }
+})
+
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,6 +123,23 @@ router.delete("/:id", async (req, res) => {
     }
   } catch (error) {
     CartDao.errorMessage(error);
+  }
+});
+
+router.delete("/:cid/product/:pid", async (req, res) => {
+  const { cid } = req.params;
+  const { pid } = req.params;
+
+  try {
+    await myCart.deleteOneProduct(+cid, +pid);
+
+    res.json({
+      message: `Product ${pid} deleted from cart ${cid}`,
+    });
+  } catch (e) {
+    res.json({
+      error: e,
+    });
   }
 });
 
