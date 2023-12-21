@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const carts = await CartDao.findCart();
-    console.log(carts)
+    console.log(carts);
     res.json({
       message: "These are the carts:",
       data: carts,
@@ -60,8 +60,8 @@ router.post("/", async (req, res) => {
 router.post("/:id/product/:pid", async (req, res) => {
   try {
     const { id } = req.params;
-    const { pid } = req.params
-    
+    const { pid } = req.params;
+
     const cart = await CartDao.findCartById(id);
 
     if (!cart) {
@@ -70,7 +70,7 @@ router.post("/:id/product/:pid", async (req, res) => {
         message: "Cart not found",
       });
     } else {
-      await CartDao.addProductToCart(id);
+      await CartDao.addProductToCart(id, pid);
 
       res.json({
         message: `Product ${pid} added to cart ${id}`,
@@ -80,7 +80,7 @@ router.post("/:id/product/:pid", async (req, res) => {
   } catch (error) {
     CartDao.errorMessage(error);
   }
-})
+});
 
 router.put("/:id", async (req, res) => {
   try {
@@ -131,11 +131,18 @@ router.delete("/:cid/product/:pid", async (req, res) => {
   const { pid } = req.params;
 
   try {
-    await myCart.deleteOneProduct(+cid, +pid);
+    const cart = await CartDao.deleteOneProduct(cid, pid);
 
-    res.json({
-      message: `Product ${pid} deleted from cart ${cid}`,
-    });
+    if (cart === false) {
+      // console.log("cart not found");
+      res.status(404).json({
+        message: `Cart ${cid} not found`,
+      });
+    } else {
+      res.json({
+        message: `Product ${pid} deleted from cart ${cid}`,
+      });
+    }
   } catch (e) {
     res.json({
       error: e,

@@ -73,16 +73,16 @@ class CartDao {
     }
   }
 
-  async addProductToCart(_id) {
+  async addProductToCart(_id, _pid) {
     try {
       if (mongoose.Types.ObjectId.isValid(_id)) {
         //busco el carrito
         const cartFound = await cartModel.findById({ _id });
 
         if (cartFound) {
-         //dentro del carrito, busco si ya existe el producto
+          //dentro del carrito, busco si ya existe el producto
           const productoRepetido = cartModel.findById(
-            "6581ca591b93ee9b747e0ba9"
+            "6581cb7a69ccfafa5939a286"
           );
 
           // console.log(productoRepetido)
@@ -91,26 +91,45 @@ class CartDao {
           if (!productoRepetido) {
             //si el producto no está, lo pusheo al array
             const prodAgregado = cartFound.products.push(
-              "6581ca591b93ee9b747e0ba9"
+              "6581cb7a69ccfafa5939a286"
             );
 
-            console.log("no lee el producto repetido")
+            // console.log("El producto es nuevo");
 
-            //  console.log(cartFound.products);
+            //buscamos el id DEL PRODUCTO y poblamos el campo products
+            const prodPoblado = await cartModel.findById(
+              "6581cb7a69ccfafa5939a286"
+            );
+
+            console.log(prodPoblado);
+
+            // const prodPopulate = prodPoblado.populate("products");
+
+            // console.log(prodPopulate);
+
+            //actualizo en la base de datos.
+            const result = await cartModel.findByIdAndUpdate(
+              { _id: cartFound._id },
+              cartFound
+            );
+            console.log(result.products);
+            return;
+          
+
           } else {
-          //  si el producto ya existe, le agrego 1 a quantity
+            //  si el producto ya existe, le agrego 1 a quantity
             const nuevaCantidad = productoRepetido.quantity + 1;
             productoRepetido.quantity = nuevaCantidad;
-            console.log(nuevaCantidad)
+            // console.log("Producto repetido", nuevaCantidad);
+
+            //actualizo en la base de datos.
+            const result = await cartModel.findByIdAndUpdate(
+              { _id: cartFound._id },
+              cartFound
+            );
+            console.log(result.products);
           }
-         
 
-          //buscamos el id DEL PRODUCTO y poblamos el campo products
-          const prodPoblado = await cartModel
-            .findById("65818a4fcb5379434b37ada2")
-            .populate("products");
-
-           console.log(prodPoblado)
 
           //actualizo en la base de datos.
           const result = await cartModel.findByIdAndUpdate(
@@ -127,18 +146,30 @@ class CartDao {
     }
   }
 
-  async deleteOneProduct(_id, _pid){
-
+  async deleteOneProduct(_id, _pid) {
     try {
       if (mongoose.Types.ObjectId.isValid(_id)) {
         const cartFound = await cartModel.findById({ _id });
 
-        if (cartFound) {
-          await productModel.deleteMany({ product: _pid });
+        if (!cartFound) {
+          console.log("Cart not found");
+          return false;
 
-          // return await cartModel.findByIdAndDelete({ _id });
+        } else {
+          // const idDeProducto = cartModel.findById({ _pid })
+          const productosBorrados = await cartModel.deleteMany({
+            product: "6581ca591b93ee9b747e0ba9",
+          });
+          console.log(productosBorrados);
+
+          //lo guardo en la base de datos
+          const result = await cartModel.findByIdAndUpdate(
+            { _id: cartFound._id },
+            cartFound
+          );
+          console.log(result);
+          return;
         }
-        return "Cart not found";
       }
       console.log("Formato de id no válido");
     } catch (error) {
