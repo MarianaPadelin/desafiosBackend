@@ -1,5 +1,5 @@
 import {Schema, model} from "mongoose";
-
+import mongoosePaginate from "mongoose-paginate-v2"
 
 const productSchema = new Schema({
   title: { type: String, required: true },
@@ -11,8 +11,6 @@ const productSchema = new Schema({
   stock: { type: Number, required: true },
 });
 
-//orden en el que aparecen los productos, se pueden poner varios parámetros y la prioridad depende del orden en que se escriban
-productSchema.index({ price: 1 })
 
 //el model tiene como parámetros la colección de la data base y el schema
 const productModel = model("products", productSchema);

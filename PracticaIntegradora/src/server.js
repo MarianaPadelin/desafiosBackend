@@ -12,12 +12,6 @@ import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access
 //esto es para recorrer el array en las views (cuando es un array de objetos) 
 
 
-//falta la consigna de cart
-
-
-//---PRE ENTREGA
-//indexar por precio para hacer el sort?
-
 const app = express();
 const PORT = 8080;
 
@@ -87,4 +81,5 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api/carts", cartRouter);
 app.use("/api/products", productRouter);
 app.use("/", viewRouter);
+
 

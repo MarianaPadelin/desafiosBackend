@@ -1,13 +1,12 @@
 import { Router } from "express";
 import ProductDao from "../daos/dbManager/product.dao.js";
-// import { productModel } from "../Models/product.model.js";
-// import { cartModel } from "../Models/cart.js";
 // import cartDao from "../daos/dbManager/cart.dao.js";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
+
     const products = await ProductDao.getAllProducts();
     res.json({
       message: "Post list",
@@ -34,7 +33,6 @@ router.get("/:id", async (req, res) => {
         product,
       });
     }
-    //anda bien pero se me tilda el codigo en consola
   } catch (error) {
     ProductDao.errorMessage(error);
   }
@@ -105,12 +103,7 @@ router.delete("/:id", async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      error,
-      message: "Error",
-    });
-    // ProductDao.errorMessage(error);
+    ProductDao.errorMessage(error);
   }
 });
 
