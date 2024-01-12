@@ -1,4 +1,5 @@
 const form = document.getElementById("registerForm")
+// import Swal from "sweetalert2";
 
 form.addEventListener("submit", e => {
     e.preventDefault();
@@ -9,8 +10,7 @@ form.addEventListener("submit", e => {
 
     data.forEach((value, key) => (obj[key] = value));
 
-
-    //esto es lo que hice en postman
+    //esto conecta con lo que hice en postman
     fetch("/api/sessions/register", {
       method: "POST",
       body: JSON.stringify(obj),
@@ -19,8 +19,12 @@ form.addEventListener("submit", e => {
       },
     }).then((result) => {
       if (result.status === 200) {
-        //me lleva a login (que lo tengo en el home)
+
+        alert("Usuario registrado correctamente")
         window.location.replace("/");
       }
-    });
+    }).catch((error) => {
+       alert("El usuario ya existe")
+        console.log(error)
+    })
 })

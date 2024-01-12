@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { productModel } from "../Models/product.model.js";
 
 const router = Router();
 
@@ -10,11 +11,5 @@ router.get("/register", async (req, res) => {
 });
 
 
-//deberia ser el home
-router.get("/profile", async (req, res) => {
-  res.render("profile", {
-    // user: req.session.user
-  });
-});
 
 export default router;

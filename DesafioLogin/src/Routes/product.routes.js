@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
     );
 
     res.status(200).render("products", {
+      user: req.session.user,
       products,
       fileCss: "index.css",
     });

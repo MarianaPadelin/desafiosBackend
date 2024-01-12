@@ -1,4 +1,16 @@
 <div>
+  <h3>Bienvenido {{user.name}}</h3>
+
+  <p>{{user.email}}</p>
+  <p><b>Rol:</b> {{user.rol}}</p>
+  
+    <button  id="botonLogout" type="submit">LOGOUT</button>
+
+
+</div>
+
+
+<div>
   <h2>Lista de productos</h2>
 
   <table>
@@ -59,10 +71,16 @@
       {{products.page}}
     </p>
   </div>
+
+
 <a href="/chat"><button> Ir al chat </button></a>
 <a href="/api/carts"><button> Ir al carrito </button></a>
+<a href="/"><button>Ir a home</button></a>
 
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/main.js"></script>
+
 </div>
+
+
+<script src="/js/profile.js"></script>

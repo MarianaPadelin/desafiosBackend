@@ -14,8 +14,6 @@ import Handlebars from "handlebars";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import session from "express-session";
 
-//ver views routes
-//preguntar si puedo entregar el desafío con las contraseñas encriptadas
 
 const app = express();
 const PORT = 8080;
@@ -67,6 +65,8 @@ mongoose
     console.log("Hubo un error de conexión a la DB" + err);
   });
 
+
+
 //Motor de handlebars
 app.engine(
   "hbs",
@@ -77,18 +77,11 @@ app.engine(
   })
 );
 
+
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
 
 app.use(express.static(`${__dirname}/public`));
-
-//views
-app.use("/api/carts", cartRouter);
-app.use("/api/products", productRouter);
-app.use("/api/sessions", sessionRouter)
-app.use("/", viewRouter);
-app.use("/users", usersViewsRouter)
-
 
 
 //Sessions
@@ -105,3 +98,14 @@ app.use(session(
     saveUninitialized: true //guarda la sesion aunque no hayamos hecho login
   }
 ))
+
+
+//views
+app.use("/api/carts", cartRouter);
+app.use("/api/products", productRouter);
+app.use("/api/sessions", sessionRouter)
+app.use("/", viewRouter);
+app.use("/users", usersViewsRouter)
+
+
+
