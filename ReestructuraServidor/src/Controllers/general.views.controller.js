@@ -10,3 +10,8 @@ export const getChat = async (req, res) => {
     messages,
   });
 };
+
+
+export const home = (req, res) => {
+  res.render("home", {});
+};

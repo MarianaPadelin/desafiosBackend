@@ -19,9 +19,7 @@ export const createHash = (hashPass) =>
 //validamos la encriptación:
 
 export const validatePass = (user, hashPass) => {
-  // console.log(
-  //   `Datos a validar: userpassword = ${user.password} y contraseña = ${hashPass}`
-  // );
+
   return bcrypt.compareSync(hashPass, user.password);
 };
 

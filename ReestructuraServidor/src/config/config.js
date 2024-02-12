@@ -4,12 +4,13 @@ import program from "../process.js";
 
 
 //tendria que importar y usar program para poder cambiar el entorno directamente desde la consola:
-// const environment = program.opts().mode
+const environment = program.opts().mode
 // const environment = "prod"
 dotenv.config({
     //para más de un entorno
-    // path: environment === "prod" ? "./src/config/env.prod" : "./src/config/env.dev"
+    path: environment === "prod" ? "./src/config/.env.prod" : "./src/config/.env.dev"
 })
+
 
 export default {
     port: process.env.PORT,

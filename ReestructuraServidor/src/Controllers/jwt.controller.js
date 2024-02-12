@@ -1,13 +1,21 @@
 import { validatePass, generateJWToken } from "../dirname.js";
 import { userModel } from "../Models/user.model.js";
 import config from "../config/config.js";
+// import { loginUser } from "../Services/jwt.service.js";
 
+export const register = async(req, res) => {
+      console.log("Registrando usuario:");
+    res
+      .status(201)
+      .send({ status: "success", message: "Usuario creado con éxito." });
+  
+}
 
 export const logUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const userExists = await userModel.findOne({ email: email });
-
+    // const userExists = await loginUser(email, password);
     if (!userExists) {
       console.warn(`User doesn't exist: ${email}`);
       return res.status(204).send({
@@ -30,11 +38,12 @@ export const logUser = async (req, res) => {
         age: userExists.age,
         role: "admin",
       };
+      //hacer una única función en service para no repetir esto con cada validación
       const access_token = generateJWToken(tokenUser);
       console.log("el token es:" + access_token);
 
       //el primer parámetro es el nombre de la cookie, el segundo es la info que contiene, el tercero su configuración
-      res.cookie("jwtCookieToken", access_token, {
+      res.cookie("jwtCookieToken", userExists, {
         maxAge: 120000,
         httpOnly: true, //No se expone la cookie
       });
@@ -107,3 +116,8 @@ export const githubcallback = async (req, res) => {
   });
   return res.redirect("/api/products");
 };
+
+
+export const failRegister = (req, res) => {
+    res.status(401).send({ error: "Falla al registrarse" });
+}

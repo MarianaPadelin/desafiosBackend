@@ -1,7 +1,9 @@
 import { cartModel } from "../../Models/cart.model.js";
 import mongoose from "mongoose";
-import { productModel } from "../../Models/product.model.js";
+// import { productModel } from "../../Models/product.model.js";
 
+
+//borrar las validaciones de si existe el carrito
 class CartDao {
   async findCart() {
     return await cartModel.find();
@@ -10,15 +12,10 @@ class CartDao {
   async findCartById(_id) {
     try {
       if (mongoose.Types.ObjectId.isValid(_id)) {
-        const cartFound = await cartModel.findById({ _id });
-
-        if (cartFound) {
           return await cartModel.findById(_id).populate("products._id")
-          
-        }
-        return "Cart not found";
+      
       }
-      console.log("Id format not valid");
+     return {error: "Id format not valid"};
     } catch (error) {
       console.log(error);
     }
@@ -127,9 +124,8 @@ class CartDao {
 
         if (cartFound) {
           cartFound.products = []
-          return await cartModel.findByIdAndUpdate(
+          return await cartModel.findByIdAndDelete(
             { _id: cartFound._id },
-            cartFound
           );
           
         }

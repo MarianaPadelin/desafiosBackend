@@ -126,7 +126,6 @@ app.use(cookieParser(config.secret));
 //views
 app.use("/api/carts", cartRouter);
 app.use("/api/products", productRouter);
-// app.use("/api/sessions", sessionRouter)
 app.use("/", viewRouter);
 app.use("/users", usersViewsRouter)
 app.use("/github", githubViewRouter)

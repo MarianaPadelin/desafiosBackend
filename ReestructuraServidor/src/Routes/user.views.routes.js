@@ -1,19 +1,15 @@
 import { Router } from "express";
 import { passportCall, authorization } from "../dirname.js";
-import { getUsers } from "../Controllers/user.views.controller.js"
+import { getUsers, registerUser } from "../Controllers/user.views.controller.js"
 const router = Router();
 
-
-router.get("/register", async (req, res) => {
-  res.render("register", {
-    fileCss: "register.css",
-  });
-});
+// Vista del formulario de registro
+router.get("/register", registerUser);
 
 
-// Endpoint que renderiza la vista del perfil de usuario
+// Vista del perfil del usuario 
 router.get("/",
-    passportCall('jwt'), //-> Usando passport-JWT por Cookie mediante customCall
+    passportCall('jwt'), 
     authorization('user'),
     getUsers
 );
