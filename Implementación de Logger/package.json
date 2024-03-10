@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "prod": "nodemon src/server.js --mode prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
