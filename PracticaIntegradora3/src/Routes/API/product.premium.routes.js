@@ -23,12 +23,6 @@ router.get(
   getOwnerProducts
 );
 
-// router.get(
-//   "/addProduct",
-//   passportCall("jwt"),
-//   authorization("premium"),
-//   getOwnerForm
-// );
 
 router.get(
   "/editProduct/:pid",
@@ -37,13 +31,6 @@ router.get(
   getEditForm
 );
 
-// router.get("/:id", getOneProduct);
-
-// router.post("/", passportCall("jwt"), authorization("premium"), postProduct);
-
-//auth a premium pero SOLO a sus propios productos, hacer una ruta aparte con sus propios productos para put y delete
-//router.put("/:uid/product/:pid")
-//router.put("/:uid/product/:pid")
 router.put(
   "/:uid/product/:pid",
   passportCall("jwt"),

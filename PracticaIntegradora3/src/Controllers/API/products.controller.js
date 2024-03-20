@@ -177,8 +177,7 @@ export const changeProduct = async (req, res) => {
     req.logger.info(id, datosProducto);
 
     const product = await ProductsRepository.getById(id);
-    // req.logger.info(product.owner);
-    // req.logger.info(req.user.email);
+
     if (product.owner === req.user.email || req.user.role === "admin") {
       ProductsRepository.update(id, datosProducto);
       if(req.user.role === "admin") {

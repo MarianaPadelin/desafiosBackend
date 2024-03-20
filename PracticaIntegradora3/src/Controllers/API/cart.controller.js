@@ -69,7 +69,6 @@ export const addProductToCart = async (req, res) => {
 
     const cart = await CartRepository.getById(id);
     if (cart) {
-      // req.logger.fatal(req.user.email)
       const productFound = await productsRepository.getById(pid);
 
       if (productFound) {
@@ -243,7 +242,7 @@ export const finalizarCompra = async (req, res) => {
         //Vacío el carrito:
         await CartRepository.delete(cid);
         return res.status(200).send({ result });
-        // res.status(200).json({ ticketGenerado })
+
       }
       return CustomError.createError({
         name: "El carrito está vacío",

@@ -17,12 +17,9 @@ form.addEventListener("submit", (e) => {
   })
     .then((result) => {
       if (result.status === 200) {
-        
-          alert("Constraseña actualizada con éxito");
+        alert("Constraseña actualizada con éxito");
 
-          return window.location.replace("/");
-        
-   
+        return window.location.replace("/");
       } else {
         alert("Error actualizando la contraseña");
         return window.location.replace("/resetPassword");

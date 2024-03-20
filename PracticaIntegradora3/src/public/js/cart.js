@@ -19,9 +19,6 @@ botonComprar.addEventListener("click", (e) => {
         return alert("El carrito está vacío.");
       } else return alert("Hubo un problema, inténtelo nuevamente");
     })
-    // .then((tid) => {
-    //   window.location.replace(`/ticket/${tid}`);
-    // })
     .catch((error) => {
       console.log(error);
     });

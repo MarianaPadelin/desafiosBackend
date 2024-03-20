@@ -32,13 +32,7 @@ form.addEventListener("submit", (e) => {
         alert("Usuario conectado");
 
         return window.location.replace("/api/products");
-      // } else if (result.status === 202) {
-      //   console.log("Data: " + data);
-      //   console.log("Cookies generadas:");
-      //   console.log(document.cookie);
-      //   alert("Usuario conectado");
 
-      //   return window.location.replace("/premium/products");
       } else {
         alert("Credenciales incorrectas");
       }

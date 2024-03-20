@@ -42,7 +42,6 @@ router.get(
   githubcallback
 );
 
-// router.post("/reset/")
 
 // //rutas de falla de registro o login:
 router.get("/fail-register", failRegister);

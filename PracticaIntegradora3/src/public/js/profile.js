@@ -38,7 +38,6 @@ botonCambiar.addEventListener("click", (e) => {
         alert("Se ha cambiado su suscripción");
       }
     })
-    //esto no anda
     .then(() => {
        fetch("/api/jwt/logout", {
          method: "GET",

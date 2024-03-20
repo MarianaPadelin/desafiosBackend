@@ -1,6 +1,7 @@
 import { cartModel } from "../../Models/cart.model.js";
 import mongoose from "mongoose";
 import __dirname from "../../../dirname.js";
+import logger from "../../../utils/loggers.js";
 
 class CartDao {
   async findCart() {
@@ -138,11 +139,11 @@ class CartDao {
 
             return result;
           }
-          // console.log("Product doesn't exist");
+          logger.error("Product doesn't exist")
           return;
         
       }
-      console.log("Id format not valid");
+      logger.error("Id format not valid");
     } catch (error) {
       console.log(error);
     }
