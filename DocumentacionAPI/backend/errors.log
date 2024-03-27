@@ -1,0 +1,119 @@
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"Invalid credentials for user: 3@gmail.com"}
+{"kind":"string","message":"Cast to string failed for value \"{ usuario: '2@gmail.com', 'contraseña': '2' }\" (type Object) at path \"email\" for model \"users\"","name":"CastError","path":"email","reason":null,"stringValue":"\"{ usuario: '2@gmail.com', 'contraseña': '2' }\"","value":{"contraseña":"2","usuario":"2@gmail.com"},"valueType":"Object"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"User doesn't exist: undefined"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Invalid credentials for user: marianapadelin@gmail.com"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"El usuario ya existe"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"test@gmail.com"},"level":"error"}
+{"level":"error","message":"Invalid credentials for user: 2@gmail.com"}
+{"level":"error","message":"Invalid credentials for user: 2@gmail.com"}
+{"level":"error","message":"no hay usuario"}
+{"level":"fatal","message":{"__v":0,"_id":"65fb74c10ea84fa999406d53","age":3,"cart":{"_id":"65fb74c10ea84fa999406d51"},"email":"3@gmail.com","first_name":"3","last_name":"3","loggedBy":"passportLocal","password":"$2b$10$JqwQ6qBvOKDhfUGnSSWkTOI1dp1t43qcMKmv.YAnnPPhERVVTEYGa","rol":"user"}}
+{"level":"error","message":"Me estoy quedando acá"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error","message":"Product 65fc76fab39027332d21d012 doesn't exist"}
+{"level":"error"}
+{"level":"error","message":"Product doesn't exist"}
+{"level":"error","message":"Product 65fc76fab39027332d21d012 doesn't exist"}
+{"level":"error"}
+{"level":"error","message":"Product 65fc76fab39027332d21d012 not found"}
+{"level":"error"}

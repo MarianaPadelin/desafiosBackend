@@ -1,0 +1,44 @@
+--generar item owner ✓
+--req al email del usuario para ponerlo en owner ✓
+--auth sobre usuarios premium ✓
+--ruta exclusiva para premium para agregar un producto y ver solo sus productos ✓
+--hacer que del login se redirija a premium/products ✓
+--ruta exclusiva de premium para edit y delete que capture sólo sus productos
+--ruta para cambiar entre premium y user ✓
+--ver la logica para el hbs de productsAdmin para ir al formulario de producto ✓
+--una lloradita y a seguir ✓
+--sacar el uid hardcodeado en premium y en user ✓
+--arreglar rutas con sus autorizaciones y sacar las que están en paralelo ✓
+--validacion para que un premium no pueda agregar sus propios productos al carrito ✓
+--revisar los permisos de todas las rutas ✓
+--volver a iniciar sesion despues de cambiar el rol para que se actualice en la pagina ✓
+--ver paginate que va a ruta api/products ✓
+--poner boton para premium de "ir a agregar/editar productos" con ruta /premium/products ✓
+--no se está mostrando el formulario de addproduct ✓
+--mail de reestablecer contraseña ✓
+--buscar email en db y update de user en db ✓
+--averiguar como desestructurar los objetos en loggers
+--chequear tiempo de expiración del link ✓
+
+--ver botón delete que agarra sólo el primer elemento
+--pasar lo de nodemailer de utils a controller para poder hacer las validaciones
+--armar carpeta utils en vez de tener todo en archivo __dirname
+--sacar todos los console.log ✓
+
+-- ver la actualizacion de carrito en addproduct (en el dao) ✓
+-- filtrar getproducts por query en el apidocs ✓
+
+--hacer un .env de testing
+--no se importa chai from “chai” porque no existe. Se importa {expect} directamente  y no es necesario declarar la constante inicial de “const expect = chai.expect” 
+
+-------combinación con frontend----
+tengo resuelto de diferente forma: 
+filtrado por categoria
+
+tengo que agregar: 
+limite
+pagination
+filtrado por stock
+inicio de sesion ✓
+vista de perfil
+carrito relacionado al usuario
