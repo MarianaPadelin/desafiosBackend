@@ -1,0 +1,43 @@
+.botonVolver {
+  background-color: lightcoral;
+  border: none;
+  margin-left: 3vw;
+  margin-bottom: 1vh;
+}
+
+.botonVolver:hover {
+  background-color: cadetblue;
+}
+
+.carritoVacio {
+  display: flexbox;
+  margin: 3vw;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  
+}
+
+.tacho:hover{
+  background-color: cadetblue!important
+}
+
+
+@media (max-width: 600px) {
+  .swal2-container {
+    max-width: 90vw;
+    margin: 3vw;
+  }
+
+  .bodyCarrito{
+  flex-wrap: wrap;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  }
+}
+
