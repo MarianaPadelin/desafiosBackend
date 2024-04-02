@@ -23,51 +23,49 @@ describe("Testing ecommerce app", () => {
     };
   });
 
-   describe("Testing de login y session usando cookies", () => {
-     it("Registrar correctamente al usuario", async function () {
-       //given
-       //then
-       const { statusCode } = await requester
-         .post("/api/jwt/register")
-         .send(this.testUser);
-       //assert
-       expect(statusCode).is.eql(201);
-     });
+  describe("Testing de login y session usando cookies", () => {
+    it("Registrar correctamente al usuario", async function () {
+      //given
+      //then
+      const { statusCode } = await requester
+        .post("/api/jwt/register")
+        .send(this.testUser);
+      //assert
+      expect(statusCode).is.eql(201);
+    });
 
-     it("Loggear correctamente al usuario", async function () {
-       //given
-       const loginTest = {
-         email: this.testUser.email,
-         password: this.testUser.password,
-       };
+    it("Loggear correctamente al usuario", async function () {
+      //given
+      const loginTest = {
+        email: this.testUser.email,
+        password: this.testUser.password,
+      };
 
-       //then
-       const result = await requester.post("/api/jwt/login").send(loginTest);
+      //then
+      const result = await requester.post("/api/jwt/login").send(loginTest);
 
-       const cookieResult = result.headers["set-cookie"][0];
+      const cookieResult = result.headers["set-cookie"][0];
 
-       //assert
-       expect(result.statusCode).is.eql(200);
+      //assert
+      expect(result.statusCode).is.eql(200);
 
-       //extraemos la cookie para guardarla en la variable global this.cookie
-       const cookieData = cookieResult.split("=");
-       this.cookie = {
-         name: cookieData[0],
-         value: cookieData[1],
-       };
+      //extraemos la cookie para guardarla en la variable global this.cookie
+      const cookieData = cookieResult.split("=");
+      this.cookie = {
+        name: cookieData[0],
+        value: cookieData[1],
+      };
 
-       expect(this.cookie.name).to.be.ok.and.eql("jwtCookieToken");
-       expect(this.cookie.value).to.be.ok;
-     });
-
-    
-   });
-
+      expect(this.cookie.name).to.be.ok.and.eql("jwtCookieToken");
+      expect(this.cookie.value).to.be.ok;
+      console.log(this.cookie);
+    });
+  });
 
   describe("Testing products api", () => {
     it("Crear producto, el API POST /api/products debe generar un nuevo producto en la DB", async function () {
       //given
-      console.log(this.cookie)
+
       const testProduct = {
         title: "Producto de prueba 01",
         description: "Esto es un producto de prueba",
@@ -80,15 +78,15 @@ describe("Testing ecommerce app", () => {
       //then
 
       //seteamos la cookie para dar autorización a la ruta
-      const { _body } = await requester
-        .get("ruta")
-        .set("Cookie", [`${this.cookie.name}=${this.cookie.value}`]);
-        //no lee el set cookie
+      //   const { _body } = await requester
+      //     .get("")
+      // .set("Cookie", [`${this.cookie.name}=${this.cookie.value}`]);
+      //no lee el set cookie
 
       const { statusCode, ok } = await requester
         .post("/api/products")
+        .set("Cookie", [`${this.cookie.name}=${this.cookie.value}`])
         .send(testProduct);
-
 
       //assert
       expect(statusCode).is.eqls(201);
@@ -125,5 +123,4 @@ describe("Testing ecommerce app", () => {
     //   mongoose.connection.collections.products.drop();
     // });
   });
- 
 });
