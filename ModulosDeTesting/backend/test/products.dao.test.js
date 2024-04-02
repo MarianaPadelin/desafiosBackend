@@ -55,7 +55,7 @@ describe("Testing product Dao", () => {
 
   afterEach(function () {
     //borro el usuario que agregué, para que no se repita el usuario agregado al hacer nuevos tests
-    mongoose.connection.collections.users.drop();
+    mongoose.connection.collections.products.drop();
   });
 
   //   it("getProductById(_id)"";
