@@ -30,7 +30,16 @@
 
 --hacer un .env de testing ✓
 --no se importa chai from “chai” porque no existe. Se importa {expect} directamente  y no es necesario declarar la constante inicial de “const expect = chai.expect” ✓
---cambiar las direcciones hardcodeadas a config
+--cambiar las direcciones hardcodeadas a config ✓
+--separar en carpetas ✓
+--para users separar en rutas de admin, user  ✓
+--dale mariana que faltan 2 semanas y terminás vos podés
+--modificar la ruta api/products/getProduct/:id (sacarle el getProduct)
+
+--ver corrección de switchUser
+--registrar el usuario admin que va a ser el de prueba para products ✓
+--ver que el usuario prueba de products se registre como admin ✓
+--eliminar usuario al terminar
 
 -------handlebars------
 
