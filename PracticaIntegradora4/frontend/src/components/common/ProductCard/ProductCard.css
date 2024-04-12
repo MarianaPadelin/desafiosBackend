@@ -1,0 +1,48 @@
+.tarjeta {
+  background-color: darkcyan;
+  border-color: beige;
+  width: 300px;
+  height: 450px;
+  margin: 6px !important;
+}
+
+.imgTarjeta {
+  height: 190px;
+  overflow: hidden;
+}
+
+.botonesAdmin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botonesStock {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1vh;
+}
+
+.precios {
+  font-weight: bold;
+  border-radius: 0.5vw !important;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.botonComprar {
+  background-color: rgb(65, 105, 107);
+  border: none;
+}
+
+.botonComprar:hover {
+  background-color: lightcoral;
+  opacity: 100%;
+}
+
+.detalle:hover {
+  background-color: lightcoral;
+}
+
+.detalle {
+  margin: 1vw;
+}

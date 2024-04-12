@@ -1,0 +1,41 @@
+.datosUsuario {
+  display: block;
+  margin-left: 3vw;
+}
+
+.formularioEnvio {
+  margin: 3vw;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  gap: 3vh;
+}
+
+.botonVolver {
+  margin: 0px;
+}
+
+.textoPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-style: italic;
+  background-color: cadetblue;
+  margin: 3vw;
+  border-radius: 1vw;
+  padding: 3vw;
+}
+
+@media (max-width: 600px) {
+  .checkoutContainer {
+    display: block;
+    max-width: 70vw;
+    margin: 5vw;
+  }
+
+  .textoPrincipal {
+    font-size: 20px;
+    width: 80vw;
+  }
+}

@@ -1,0 +1,25 @@
+.camposFormulario{
+
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.registrarse{
+    color:black;
+    text-decoration: none;
+    
+}
+
+.logoGithub{
+    width: 50px;
+    height: 50px;
+}
+
+.divGithub{
+    display: flex;
+    gap: 1vw;
+}

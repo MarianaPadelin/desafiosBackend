@@ -1,0 +1,17 @@
+.card{
+    margin: 2%;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.card-header {
+ text-align: center;
+ width: 100%
+}
+
+.containerImg {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,17 @@
+.camposFormulario{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    gap:20px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.divFormulario{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
