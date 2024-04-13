@@ -2,7 +2,7 @@ import { userModel } from "../../Models/user.model.js";
 import mongoose from "mongoose";
 // import { createHash } from "../../../utils/authorizations.js";
 import __dirname, { createHash } from "../../../dirname.js";
-class UserDao {
+export default class UserDao {
   async getUser(uid) {
     try {
       if (mongoose.Types.ObjectId.isValid(uid)) {
@@ -14,7 +14,26 @@ class UserDao {
     }
   }
 
-  async updateUserStatus(_id, role) {
+  async updateUserStatus(_id) {
+    try {
+      if (mongoose.Types.ObjectId.isValid(_id)) {
+        const userExists = await userModel.findById({ _id });
+
+        if (userExists) {
+          //solo actualizar el estado si los documentos que se suben son los necesarios
+          await userModel.findByIdAndUpdate(
+            { _id },
+            { status: "docsUploaded" }
+          );
+         
+        }
+        return "User not found";
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+  async updateUserRole(_id, role) {
     try {
       if (mongoose.Types.ObjectId.isValid(_id)) {
         const userExists = await userModel.findById({ _id });
@@ -39,8 +58,7 @@ class UserDao {
         const userExists = await userModel.findById({ _id });
 
         if (userExists) {
-          //me hace el update de a un solo elemento, por eso pongo 2 funciones:
-          await userModel.findByIdAndUpdate({ _id }, { status: "docUploaded" });
+         
           let result = await userModel.findByIdAndUpdate(
             { _id },
             {
@@ -96,4 +114,4 @@ class UserDao {
   }
 }
 
-export default new UserDao();
+// export default new UserDao();

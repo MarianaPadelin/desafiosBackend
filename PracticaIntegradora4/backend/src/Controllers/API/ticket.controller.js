@@ -1,10 +1,10 @@
-import TicketDao from "../../Services/DAOS/mongoDB/ticket.dao.js";
-
+// import TicketDao from "../../Services/DAOS/mongoDB/ticket.dao.js";
+import { ticketService } from "../../Services/services.js";
 import __dirname from "../../dirname.js";
 
 export const getAllTickets = async (req, res) => {
   try {
-    const ticketList = await TicketDao.getAll();
+    const ticketList = await ticketService.getAll();
     res.json({
       message: "These are the tickets",
       data: ticketList,

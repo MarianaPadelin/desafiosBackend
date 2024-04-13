@@ -6,8 +6,11 @@ import { userModel } from "../Services/Models/user.model.js";
 import jwtStrategy from "passport-jwt";
 import GitHubStrategy from "passport-github2";
 import config from "./config.js";
-import cartDao from "../Services/DAOS/mongoDB/cart.dao.js";
+import { cartService } from "../Services/services.js";
+// import cartDao from "../Services/DAOS/mongoDB/cart.dao.js";
 import __dirname from "../dirname.js";
+
+//cambiar usermodel por userservice
 // import __dirname from "../utils/dirname.js";
 
 
@@ -60,7 +63,7 @@ const inicializePassport = () => {
           if (!userExists) {
             let cart = {};
 
-            const newCart = await cartDao.createCart(cart);
+            const newCart = await cartService.save(cart);
 
             if (profile._json.email === config.adminMail) {
               let newUser = {
@@ -125,7 +128,7 @@ const inicializePassport = () => {
           
           let cart = {};
 
-          const newCart = await cartDao.createCart(cart);
+          const newCart = await cartService.save(cart);
 
         
           //valido registro como admin:

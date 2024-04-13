@@ -1,30 +1,30 @@
-import productDao from "../DAOS/mongoDB/product.dao.js";
+// import productDao from "../DAOS/mongoDB/product.dao.js";
 
-class ProductsRepository {
+export default class ProductsRepository {
   constructor(dao) {
     this.dao = dao;
   }
   getAll = () => {
-    return productDao.getAllProducts();
+    return this.dao.getAllProducts();
   };
   getById = (id) => {
-    return productDao.getProductById(id);
+    return this.dao.getProductById(id);
   };
   getByCode = (code) => {
-    return productDao.getProductByCode(code);
+    return this.dao.getProductByCode(code);
   };
   filter = (limit, page, category, stock, email) => {
-    return productDao.filterProducts(limit, page, category, stock, email);
+    return this.dao.filterProducts(limit, page, category, stock, email);
   };
   save = (product) => {
-    return productDao.addProduct(product);
+    return this.dao.addProduct(product);
   };
   update = (id, product) => {
-    return productDao.modifyProduct(id, product);
+    return this.dao.modifyProduct(id, product);
   };
   delete = (id) => {
-    return productDao.deleteProduct(id);
+    return this.dao.deleteProduct(id);
   };
 }
 
-export default new ProductsRepository();
+// export default new ProductsRepository();

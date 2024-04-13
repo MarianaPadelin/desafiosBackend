@@ -244,3 +244,35 @@
 {"level":"error","message":"Me estoy quedando en !user de passportCall"}
 {"level":"error","message":"Me estoy quedando en !user de passportCall"}
 {"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Invalid credentials for user: adminCoder@coder.com"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"User doesn't exist: adminCoder.com"}
+{"level":"error","message":"User doesn't exist: adminCoder@gmail.com"}
+{"_message":"users validation failed","errors":{"status":{"kind":"enum","message":"`docNotUploaded` is not a valid enum value for path `status`.","name":"ValidatorError","path":"status","properties":{"enumValues":["docsUploaded","docsNotUploaded"],"message":"`docNotUploaded` is not a valid enum value for path `status`.","path":"status","type":"enum","value":"docNotUploaded"},"value":"docNotUploaded"}},"level":"error","message":"users validation failed: status: `docNotUploaded` is not a valid enum value for path `status`.","name":"ValidationError"}
+{"level":"error","message":"User doesn't exist: img3@coder.com"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}
+{"level":"error","message":"Me estoy quedando en !user de passportCall"}

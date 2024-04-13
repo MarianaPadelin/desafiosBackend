@@ -1,18 +1,19 @@
-import ticketDao from "../DAOS/mongoDB/ticket.dao.js";
+// import ticketDao from "../DAOS/mongoDB/ticket.dao.js";
 
-class TicketRepository {
-
+export default class TicketRepository {
+  constructor(dao) {
+    this.dao = dao;
+  }
   getAll = () => {
-    return ticketDao.getAll();
+    return this.dao.getAll();
   };
   getById = (id) => {
-    return ticketDao.findOneTicket(id);
+    return this.dao.findOneTicket(id);
   };
   save = (ticket) => {
-    return ticketDao.generateTicket(ticket);
+    return this.dao.generateTicket(ticket);
   };
- 
 }
 
 
-export default new TicketRepository();
+// export default new TicketRepository();

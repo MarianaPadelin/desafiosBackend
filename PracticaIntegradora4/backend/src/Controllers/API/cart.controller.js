@@ -1,6 +1,10 @@
-import CartRepository from "../../Services/Repository/cart.repository.js";
-import TicketRepository from "../../Services/Repository/ticket.repository.js";
-import productsRepository from "../../Services/Repository/products.repository.js";
+// import CartRepository from "../../Services/Repository/cart.repository.js";
+// import TicketRepository from "../../Services/Repository/ticket.repository.js";
+
+import { cartService } from "../../Services/services.js";
+import { ticketService } from "../../Services/services.js";
+import { productService } from "../../Services/services.js";
+// import productsRepository from "../../Services/Repository/products.repository.js";
 import EErrors from "../../Services/errors/error-dictionary.js";
 import CustomError from "../../Services/errors/customError.js";
 import {
@@ -12,7 +16,7 @@ import { sendEmail } from "../../dirname.js";
 
 export const getCarts = async (req, res) => {
   try {
-    const carts = await CartRepository.getAll();
+    const carts = await cartService.getAll();
 
     res.send({
       carts,
@@ -27,7 +31,7 @@ export const getOneCart = async (req, res) => {
   try {
     const { cid } = req.params;
 
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
 
     // let totalPrice = await CartRepository.getTotal(cart);
 
@@ -48,7 +52,7 @@ export const getOneCart = async (req, res) => {
 
 export const postCart = async (req, res) => {
   try {
-    const cart = await CartRepository.save();
+    const cart = await cartService.save();
     res.send({
       data: cart,
     });
@@ -66,13 +70,13 @@ export const addProductToCart = async (req, res) => {
     const { cid } = req.params;
     const { pid } = req.params;
 
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
     if (cart) {
-      const productFound = await productsRepository.getById(pid);
+      const productFound = await productService.getById(pid);
 
       if (productFound) {
         if (productFound.owner !== req.user.email) {
-          let result = await CartRepository.addProduct(cid, pid);
+          let result = await cartService.addProduct(cid, pid);
           req.logger.info(`product ${pid} added to cart`);
 
           return res.status(200).send({
@@ -111,9 +115,9 @@ export const changeProductQuantity = async (req, res) => {
   const { quantity } = req.body;
 
   try {
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
     if (cart) {
-      let result = await CartRepository.updateProduct(cid, pid, quantity);
+      let result = await cartService.updateProduct(cid, pid, quantity);
       if (result) {
         req.logger.info(`Product ${pid} updated`);
         return res.send({
@@ -143,9 +147,9 @@ export const changeProductQuantity = async (req, res) => {
 export const deleteCart = async (req, res) => {
   const { cid } = req.params;
   try {
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
     if (cart) {
-      CartRepository.delete(cid);
+      cartService.delete(cid);
       req.logger.debug(`Cart ${cid} is empty`);
       return res.status(200).send({
         cart,
@@ -168,9 +172,9 @@ export const deleteProductFromCart = async (req, res) => {
   const { pid } = req.params;
 
   try {
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
     if (cart) {
-      let result = await CartRepository.deleteProduct(cid, pid);
+      let result = await cartService.deleteProduct(cid, pid);
       if (result) {
         req.logger.debug(`Product ${pid} deleted`);
         return res.send({
@@ -202,13 +206,13 @@ export const finalizarCompra = async (req, res) => {
   const { cid } = req.params;
 
   try {
-    const cart = await CartRepository.getById(cid);
+    const cart = await cartService.getById(cid);
     if (cart) {
-      const amount = await CartRepository.getTotal(cart);
+      const amount = await cartService.getTotal(cart);
       if (amount !== 0) {
         const purchase_datetime = new Date();
-        console.log(cart)
-        console.log(cart.products)
+        // console.log(cart)
+        // console.log(cart.products)
         const ticket = {
           amount,
           cart,
@@ -229,18 +233,18 @@ export const finalizarCompra = async (req, res) => {
               thumbnails: product._id.thumbnails,
             };
 
-            productsRepository.update(product._id._id, newProduct);
+            productService.update(product._id._id, newProduct);
           }
         );
 
-        const result = await TicketRepository.save(ticket);
+        const result = await ticketService.save(ticket);
 
         sendEmail(result.id, req.user.email);
 
-        const ticketGenerado = await TicketRepository.getById(result._id);
+        const ticketGenerado = await ticketService.getById(result._id);
 
         //Vacío el carrito:
-        await CartRepository.delete(cid);
+        await cartService.delete(cid);
         return res.status(200).send({ result });
       }
       return CustomError.createError({

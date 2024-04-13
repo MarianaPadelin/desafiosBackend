@@ -1,27 +1,30 @@
-import userDao from "../DAOS/mongoDB/user.dao.js";
+// import userDao from "../DAOS/mongoDB/user.dao.js";
 
-class UserRepository {
+export default class UserRepository {
   constructor(dao) {
     this.dao = dao;
   }
   getUser = async (uid) => {
-    return await userDao.getUser(uid);
+    return await this.dao.getUser(uid);
   };
-  updateUserStatus = async (uid, role) => {
-    return await userDao.updateUserStatus(uid, role);
+  updateUserRole = async (uid, role) => {
+    return await this.dao.updateUserRole(uid, role);
+  };
+  updateUserStatus = async (uid) => {
+    return await this.dao.updateUserStatus(uid);
   };
   updateUserFiles = async (uid, imgName, imgPath) => {
-    return await userDao.updateUserFiles(uid, imgName, imgPath)
-  }
+    return await this.dao.updateUserFiles(uid, imgName, imgPath);
+  };
   updatePassword = async (email, password) => {
-    return await userDao.updatePassword(email, password);
+    return await this.dao.updatePassword(email, password);
   };
   updateConnection = async (email, loginTime) => {
-    return await userDao.updateConnection(email, loginTime);
+    return await this.dao.updateConnection(email, loginTime);
   };
   findUser = async (email) => {
-    return await userDao.findUser(email);
+    return await this.dao.findUser(email);
   };
 }
 
-export default new UserRepository();
+// export default new UserRepository();

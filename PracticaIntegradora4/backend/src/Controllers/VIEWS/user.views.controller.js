@@ -1,5 +1,5 @@
-import cartRepository from "../../Services/Repository/cart.repository.js";
-
+// import cartRepository from "../../Services/Repository/cart.repository.js";
+import { cartService } from "../../Services/services.js";
 
 export const registerUser = async (req, res) => {
   res.render("register", {
@@ -40,7 +40,7 @@ export const viewCart = async (req, res) => {
     try {
       const { cid } = req.params;
 
-      const cart = await cartRepository.getById(cid);
+      const cart = await cartService.getById(cid);
 
       // let totalPrice = await cartRepository.getTotal(cart);
 

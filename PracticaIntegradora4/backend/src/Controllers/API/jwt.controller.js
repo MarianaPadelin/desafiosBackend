@@ -2,7 +2,8 @@
 import { validatePass, generateJWToken } from "../../dirname.js";
 import config from "../../config/config.js";
 import { userModel } from "../../Services/Models/user.model.js";
-import userRepository from "../../Services/Repository/user.repository.js";
+// import userRepository from "../../Services/Repository/user.repository.js";
+import { userService } from "../../Services/services.js";
 
 export const register = async (req, res) => {
   req.logger.info("Registrando usuario");
@@ -33,7 +34,7 @@ export const logUser = async (req, res) => {
 
     const loginTime = new Date();
 
-    await userRepository.updateConnection(email, loginTime);
+    await userService.updateConnection(email, loginTime);
 
     const tokenUser = {
       _id: userExists._id,
@@ -77,22 +78,24 @@ export const logUser = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  const email = req.user.email
-  const loginTime = new Date()
+  const email = req.user.email;
+  const loginTime = new Date();
 
-  await userRepository.updateConnection(email, loginTime);
-
-  req.session.destroy((error) => {
-    if (error) {
-      return res.json({
-        error: "Error de logout",
-        msg: "Error al cerrar la session",
-      });
-    }
-    req.logger.info("Se ha cerrado la sesión");
-    //eliminar la cookie?
-    return res.status(200).send("Se ha cerrado la sesión");
-  });
+  await userService.updateConnection(email, loginTime);
+  res.clearCookie("jwtCookieToken")
+  // req.session.destroy((error) => {
+  //   if (error) {
+  //     return res.json({
+  //       error: "Error de logout",
+  //       msg: "Error al cerrar la session",
+  //     });
+  //   }
+  //   req.logger.info("Se ha cerrado la sesión");
+  //   //eliminar la cookie?
+  //   return res.status(200).send("Se ha cerrado la sesión");
+  // });
+   req.logger.info("Se ha cerrado la sesión");
+   return res.status(200).send("Se ha cerrado la sesión");
 };
 
 export const githubcallback = async (req, res) => {

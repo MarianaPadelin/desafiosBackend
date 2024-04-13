@@ -1,7 +1,8 @@
 import { ticketModel } from "../../Models/ticket.model.js";
 import mongoose from "mongoose";
 
-class TicketDao {
+
+export default class TicketDao {
   async getAll() {
     return await ticketModel.find();
   }
@@ -27,4 +28,4 @@ class TicketDao {
 }
 
 
-export default new TicketDao();
+// export default new TicketDao();

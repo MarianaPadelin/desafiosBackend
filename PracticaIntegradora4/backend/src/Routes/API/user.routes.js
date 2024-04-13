@@ -38,7 +38,7 @@ router.post(
   passportCall("jwt"),
   authorization(["premium", "user"]),
   //lo que esté dentro de array tiene que tener el mismo nombre que voy a subir desde postman
-  uploader.array("premiumReq", 3),
+  uploader.any("file"),
   uploadFiles
 );
 

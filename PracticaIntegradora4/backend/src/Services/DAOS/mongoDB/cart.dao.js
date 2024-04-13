@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import __dirname from "../../../dirname.js";
 import logger from "../../../utils/loggers.js";
 
-class CartDao {
+export default class CartDao {
   async findCart() {
     return await cartModel.find();
   }
@@ -163,7 +163,7 @@ class CartDao {
 
   async getTotal(cart) {
     const cartFound = await this.findCartById(cart._id);
-    console.log(cart)
+    // console.log(cart)
     const total = await cartFound.products.reduce((acc, elemento) => {
       return acc + elemento.quantity * elemento._id.price;
     }, 0);
@@ -172,4 +172,4 @@ class CartDao {
   }
 }
 
-export default new CartDao();
+// export default new CartDao();

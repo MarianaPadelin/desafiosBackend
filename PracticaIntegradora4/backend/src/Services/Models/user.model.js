@@ -26,7 +26,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     enum: ["docsUploaded", "docsNotUploaded"],
-    default: "docNotUploaded",
+    default: "docsNotUploaded",
   },
 
   last_connection: { type: Date, default: Date.now },

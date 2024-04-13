@@ -44,7 +44,9 @@
 --probar subir multiples archivos ✓
 --ver los 3 nombres específicos de archivo que me piden ✓
 --probar un html para subir los archivos
---que el status cambie solamente cuando subo los documentos requeridos, no cuando subo foto de perfil o productos
+--que el status cambie solamente cuando subo los documentos requeridos, no cuando subo foto de perfil o productos✓
+--actualizar la cookie
+--cambiar el nombre del file
 
 -------handlebars------
 

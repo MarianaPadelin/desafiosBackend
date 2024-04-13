@@ -1,23 +1,19 @@
-import ProductsRepository from "../../Services/Repository/products.repository.js";
+// import ProductsRepository from "../../Services/Repository/products.repository.js";
 import CustomError from "../../Services/errors/customError.js";
 import EErrors from "../../Services/errors/error-dictionary.js";
 import {
   generateProductErrorInfoES,
   repetedCodeErrorInfo,
 } from "../../Services/errors/messages/productSave.msg.js";
+import { productService } from "../../Services/services.js";
 
 //PARA PÚBLICO EN GENERAL (sin mostrar datos de cuenta)
 export const getProducts = async (req, res) => {
   const { limit, page, category, stock } = req.query;
-    console.log(req.query)
+    // console.log(req.query)
     
   try {
-    const products = await ProductsRepository.filter(
-      limit,
-      page,
-      category,
-      stock
-    );
+    const products = await productService.filter(limit, page, category, stock);
       res.status(200).json(products)
     // res.status(200).render("productsLibre", {
     //   products,
@@ -33,12 +29,7 @@ export const getProducts = async (req, res) => {
 export const getAdminProducts = async (req, res) => {
   const { limit, page, category, stock } = req.query;
   try {
-    const products = await ProductsRepository.filter(
-      limit,
-      page,
-      category,
-      stock
-    );
+    const products = await productService.filter(limit, page, category, stock);
 
     res.status(200).render("productsAdmin", {
       user: req.user.name,
@@ -60,7 +51,7 @@ export const getOwnerProducts = async (req, res) => {
 
 
   try {
-    const products = await ProductsRepository.filter(
+    const products = await productService.filter(
       limit,
       page,
       category,
@@ -83,14 +74,9 @@ export const getOwnerProducts = async (req, res) => {
 //PARA USERS:
 export const getUserProducts = async (req, res) => {
   const { limit, page, category, stock } = req.query;
-  console.log(req.query)
+  // console.log(req.query)
   try {
-    const products = await ProductsRepository.filter(
-      limit,
-      page,
-      category,
-      stock
-    );
+    const products = await productService.filter(limit, page, category, stock);
 
     res.status(200).render("products", {
       id: req.user._id,
@@ -110,7 +96,7 @@ export const getOneProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const product = await ProductsRepository.getById(id);
+    const product = await productService.getById(id);
     //hacer render con vista del producto individual
     res.status(201).json({
       product,
@@ -139,7 +125,7 @@ export const postProduct = async (req, res) => {
     };
 
     req.logger.info(`producto ingresado: ${datosProducto}`);
-    console.log(datosProducto)
+    // console.log(datosProducto)
 
     if (!title || !description || !price || !code || !category || !stock) {
       CustomError.createError({
@@ -149,7 +135,7 @@ export const postProduct = async (req, res) => {
         code: EErrors.INVALID_TYPES_ERROR,
       });
     }
-    const codeExists = await ProductsRepository.getByCode(code);
+    const codeExists = await productService.getByCode(code);
     if (codeExists) {
       CustomError.createError({
         name: "El código ya existe",
@@ -159,8 +145,7 @@ export const postProduct = async (req, res) => {
       });
     }
 
-    const product = await ProductsRepository.save(datosProducto);
-    console.log("llego al save")
+    const product = await productService.save(datosProducto);
     if(req.user.role === "premium"){
         return  res.status(200).json({
             product,
@@ -182,7 +167,7 @@ export const changeProduct = async (req, res) => {
   try {
     req.logger.info(id, datosProducto);
 
-    const product = await ProductsRepository.getById(id);
+    const product = await productService.getById(id);
 
     if (product.owner === req.user.email || req.user.role === "admin") {
       ProductsRepository.update(id, datosProducto);
@@ -214,7 +199,7 @@ export const changeProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await ProductsRepository.getById(id);
+    const product = await productService.getById(id);
     if (!product) {
       res.status(404).json({
         message: "Product not found",
@@ -222,7 +207,7 @@ export const deleteProduct = async (req, res) => {
     }
     if (product.owner === req.user.email || req.user.role === "admin") {
 
-      ProductsRepository.delete(id);
+      productService.delete(id);
       req.logger.info(`Product ${id} deleted`);
        if (req.user.role === "admin") {
          return res.status(201).send({
